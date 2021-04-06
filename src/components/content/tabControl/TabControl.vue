@@ -29,6 +29,9 @@ export default {
     itemClick(index) {
       this.currentIndex = index
       this.$emit('itemClick', index)
+    },
+    indexChange(index) {
+      this.currentIndex = index
     }
   }
 }

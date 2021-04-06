@@ -9,7 +9,7 @@ export function getHomeMultidata() {
 export function getHomeGoods(type, page) {
   return mockReq({
     url: '/home/data/' + type,
-    data: {
+    params: {
       page
     }
   })

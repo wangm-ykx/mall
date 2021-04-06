@@ -1,6 +1,7 @@
 <template>
 <div class="wrapper">
   <ul class="content">
+    <button @click="btnClick">按钮</button>
     <li>分类列表1</li>
     <li>分类列表2</li>
     <li>分类列表3</li>
@@ -101,23 +102,6 @@
     <li>分类列表98</li>
     <li>分类列表99</li>
     <li>分类列表100</li>
-    <li>分类列表101</li>
-    <li>分类列表102</li>
-    <li>分类列表103</li>
-    <li>分类列表104</li>
-    <li>分类列表105</li>
-    <li>分类列表106</li>
-    <li>分类列表107</li>
-    <li>分类列表108</li>
-    <li>分类列表109</li>
-    <li>分类列表110</li>
-    <li>分类列表111</li>
-    <li>分类列表112</li>
-    <li>分类列表113</li>
-    <li>分类列表114</li>
-    <li>分类列表115</li>
-    <li>分类列表116</li>
-    <li>分类列表117</li>
   </ul>
 </div>
 </template>
@@ -134,7 +118,27 @@ export default {
   },
   mounted() {
     this.bScroll = new BScroll('.wrapper', {
+      // 是否实时侦测（0是默认不侦测，1是显示定义不侦测，2是手指滚动过程中侦测，手指离开后的惯性滚动不侦测，3是只要是滚动都侦测）
+      probeType: 2,
+      pullUpLoad: true
     })
+    // 默认情况下BScroll是不可以实时监听滚动位置，初始化时options传值
+    this.bScroll.on('scroll', (position) => {
+      // console.log(position);
+    })
+    this.bScroll.on('pullingUp', () => {
+      // 发送网络请求，请求更多信息
+      console.log('上拉加载更多')
+      // 等数据请求完成病展示出来之后调用，这样才能处罚下次上拉加载更多
+      setTimeout(() => {
+        this.bScroll.finishPullUp()
+      }, 2000)
+    })
+  },
+  methods: {
+    btnClick() {
+      console.log('btn click')
+    }
   }
 }
 </script>

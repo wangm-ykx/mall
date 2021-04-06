@@ -39,9 +39,6 @@ export function mockReq(config) {
   // 请求拦截
   instance.interceptors.request.use(
     config => {
-      if(config.method === 'get') {
-        config.params = config.data
-      }
       config.url = '/mock-api' + config.url
       return config
     },
