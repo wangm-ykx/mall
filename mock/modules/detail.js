@@ -168,5 +168,19 @@ module.exports = [
         ]
       }).list
     })
+  },
+  {
+    url: '/mock-api/goods/recommend',
+    type: 'post',
+    response: new DataModel({
+      list: Mock.mock({
+        "list|10": [
+          {
+            desc: Random.ctitle(40,60),
+            img: Random.image('180x150', Random.color(), '#FFFFFF', 'detail recommend')
+          }
+        ]
+      }).list
+    })
   }
 ]

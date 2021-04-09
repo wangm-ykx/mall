@@ -35,19 +35,21 @@ import NavBar from 'components/common/navbar/NavBar';
 import Scroll from "components/common/scroll/Scroll";
 import TabControl from "components/content/tabControl/TabControl";
 import GoodsList from "components/content/goods/GoodsList";
-import BackTop from "components/content/backTop/BackTop";
 import HomeSwiper from './components/HomeSwiper';
 
 import { getHomeMultidata, getHomeGoods } from "@/network/home";
 
+import { debounce } from 'common/utils'
+import { backMixin } from "@/common/mixinx";
+
 export default {
   name: "Home",
+  mixins: [backMixin],
   components: {
     NavBar,
     Scroll,
     TabControl,
     GoodsList,
-    BackTop,
     HomeSwiper
   },
   data() {
@@ -70,8 +72,6 @@ export default {
         }
       },
       currentType: 'pop',
-      // 回到顶部
-      backTopShow: false,
       // 吸顶tab
       tabOffsetTop: 0,
       isTabFixedShow: false,
@@ -95,24 +95,13 @@ export default {
   mounted() {
     /*图片加载完成的事件监听*/
     // 防抖包装
-    const refresh = this.debounce(this.$refs.scroll.refresh)
-    // 监听item中图片加载完成
-    this.$bus.$on('itemImageLoad', () => {
+    const refresh = debounce(this.$refs.scroll.refresh)
+    this.$bus.$on('homeItemImageLoad', () => {
       refresh()
     })
   },
   methods: {
     /*监听事件*/
-    // bscrol刷新防抖
-    debounce(func, delay = 1000) {
-      let timer = null
-      return function () {
-        if(timer) clearTimeout()
-        timer = setTimeout(() => {
-          func.apply(this)
-        }, delay)
-      }
-    },
     tabClick(index) {
       switch (index) {
         case 0:
@@ -127,10 +116,6 @@ export default {
       }
       this.$refs.tabControl1.indexChange(index)
       this.$refs.tabControl2.indexChange(index)
-    },
-    // 回到顶部
-    backTopClick() {
-      this.$refs.scroll.scrollTo(0, 0, 500)
     },
     // 回到顶部显示控制
     contentScroll(position) {

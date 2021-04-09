@@ -34,6 +34,7 @@ export default {
 <style scoped>
 .detail-comment-info{
   border-top: 5px solid #cccccc;
+  padding-bottom: 4vw;
 }
 .title{
   padding: 4vw 2.5vw;

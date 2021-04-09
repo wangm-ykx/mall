@@ -8,7 +8,7 @@
 import GoodsListItem from "@/components/content/goods/GoodsListItem";
 
 export default {
-  name: "GoodsList",
+  imageLoadname: "GoodsList",
   components: {
     GoodsListItem
   },

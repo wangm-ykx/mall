@@ -124,11 +124,9 @@ export default {
     })
     // 默认情况下BScroll是不可以实时监听滚动位置，初始化时options传值
     this.bScroll.on('scroll', (position) => {
-      // console.log(position);
     })
     this.bScroll.on('pullingUp', () => {
       // 发送网络请求，请求更多信息
-      console.log('上拉加载更多')
       // 等数据请求完成病展示出来之后调用，这样才能处罚下次上拉加载更多
       setTimeout(() => {
         this.bScroll.finishPullUp()
@@ -137,7 +135,6 @@ export default {
   },
   methods: {
     btnClick() {
-      console.log('btn click')
     }
   }
 }

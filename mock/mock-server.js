@@ -21,7 +21,6 @@ for(let mock of mocks){
 		}
 		// 处理详情区分
 		if(req.query.id) {
-			console.log(req.query.id)
 			const idType = req.query.id % 2 === 0 ? 'Even': 'Odd'
 			res.send(mock['response' + idType])
 		}
