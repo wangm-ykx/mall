@@ -10,6 +10,15 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }))
 
+//设置允许跨域访问该服务
+// app.all('*', function (req, res, next) {
+// 	res.header('Access-Control-Allow-Origin', '*');
+// 	res.header('Access-Control-Allow-Headers', 'Content-Type');
+// 	res.header('Access-Control-Allow-Methods', '*');
+// 	res.header('Content-Type', 'application/json;charset=utf-8');
+// 	next();
+// })
+
 // 注册请求
 const mocks = require('./modules')
 for(let mock of mocks){

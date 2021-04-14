@@ -39,7 +39,7 @@ import HomeSwiper from './components/HomeSwiper';
 
 import { getHomeMultidata, getHomeGoods } from "@/network/home";
 
-import { debounce } from 'common/utils'
+import { debounce } from '@/common/utils'
 import { backMixin } from "@/common/mixinx";
 
 export default {

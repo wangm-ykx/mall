@@ -33,6 +33,7 @@ export function coderTReq(config) {
 
 export function mockReq(config) {
   const instance = axios.create({
+    baseURL: 'http://localhost:5000', //代理或在服务端mock-server处理允许跨域
     timeout: 5000
   })
 
